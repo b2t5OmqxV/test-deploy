@@ -1,0 +1,66 @@
+<div class='body'>
+	<div class='container'>
+    <div class='row'>
+      <div class='col-xs-3'>
+
+        <h2>User info</h2>
+        <%= render 'profile', user: @user %>
+        <!--同コントローラーのviewで表示ならusersは省略可 -->
+
+          <div class='row'>
+	          <%= link_to '',edit_user_path(current_user.id), class: "col-xs-12 btn btn-default glyphicon glyphicon-wrench edit_user_#{@user.id}" %>
+          </div>
+
+        <h2>New book</h2>
+        <%= render 'books/newform', book: @book %>
+
+      </div>
+
+      <div class='col-xs-9'>
+
+        <h2>Books</h2>
+        <!--books一覧 -->
+        <table class="table table-hover table-inverse">
+	        <thead>
+		      <tr>
+			      <th></th>
+			      <th>Title</th>
+			      <th>Opinion</th>
+			      <th colspan="3"></th>
+		      </tr>
+	        </thead>
+
+	        <tbody>
+		      <% @books.each do |book| %>
+
+		      <tr>
+			      <td>
+				      <%= link_to (book.user) do %>
+				      <%= attachment_image_tag(book.user, :profile_image, :fill, 50, 50, fallback: "no_image.jpg", size:"50x50") %>
+				      <% end %>
+			      </td>
+			      <td>
+			      	<%= link_to book.title,book, class: "book_#{book.id}" %>
+			      </td>
+			      <td>
+			      	<%= book.body %>
+			      </td>
+			      <td>
+			      	<p>コメント数：<%= book.book_comments.count %><p>
+			      </td>
+		      </tr>
+		      <% end %>
+	        </tbody>
+        </table>
+        <!--books一覧 -->
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<footer>
+<%= render "template/footer" %>
+</footer>
+
+
