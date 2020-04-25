@@ -18,3 +18,4 @@ find . -type f | xargs sed -i 's/opinion/body/g'
 rm db/test.sqlite3によって、ファイルを削除してから実行する
 
 test
+test
