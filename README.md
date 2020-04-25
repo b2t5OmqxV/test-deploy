@@ -19,3 +19,4 @@ rm db/test.sqlite3によって、ファイルを削除してから実行する
 
 test
 test
+test
